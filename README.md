@@ -1,17 +1,19 @@
-#  Supply Chain Resilience & Customer Lifetime Value (CLV) Optimization
+#  Proyecto end to end para e-commerce
 
-1. El Dataset: Olist E-Commerce (Kaggle) es un conjunto de datos real de e-commerce en Brasil con mas de 100k pedidos. 
+El objetivo de este proyecto es realizar un proyecto end to end para poner en práctica varios conocimientos.
+Dentro de este proyecto tenemos dos carpetas principales una que son src en donde subiremos todos los scripts que usaremos durante el código.
+Y la otra carpeta que tendríamos serían los notebooks en el que desarrollaremos y comentaremos cada uno de los rotados obtenidos por los diferentes análisis que vayamos haciendo
 
-2. El objetivo es atacar tres frentes:
-* Optimización Logística: Análisis de la brecha entre el tiempo estimado de entrega y el real, utilizando distribuciones de probabilidad para identificar cuellos de botella geográficos.
-* Modelado de Retención (Cohortes): No solo ver quién compró, sino cuándo regresan, calculando el Churn Rate y el Customer Lifetime Value.
-* Análisis de Sensibilidad: Un simulador de escenarios dentro de Power BI.
+1. Dentro de la carpeta src tenemos cuatro archivos el orden es el siguiente.
+   * Data loader funciona para descargar nuestros datos del origen correspondiente
+   * Data cleaner funciona para la limpieza de los datos así como la validación de los mismos es el intermedio entre la capa bronze y silver del esquema medalion
+   * Data save solamente es una función que nos servirá para guardar los datos y cargarlos cuando sea necesario.
+   * Finalmente stars squema builder nos permite transformar nuestros datos de una manera que sea fácil de consultar para el usuario final es el puente entre la capa silver y la capa gold del esquema medalion.
 
-3. Arquitectura del ProyectoFaseTecnologíaAcción de Nivel ExpertoETL & CleaningPython (Pandas/Polars) o SQLImplementar una arquitectura Medallion (Bronze, Silver, Gold). Manejar valores nulos mediante imputación estadística, no solo borrando filas.Análisis EstadísticoSciPy / StatsmodelsRealizar un análisis de correlación de Pearson y pruebas de hipótesis para validar si el precio del flete realmente afecta la satisfacción del cliente ($p-value < 0.05$).VisualizaciónPower BIUso exhaustivo de DAX avanzado, Row-Level Security (simulado) y Calculation Groups.
+2. Dentro de la carpeta notebooks encontraremos cuatro archivos principales describimos el funcionamiento y el propósito de cada uno en el escrito correspondiente sin embargo daremos un resumen rápido de qué trata cada uno.
+   * 01 carga de datos este notebook se encarga de procesar los datos en cada una de las capas correspondientes para su limpieza y para la entrega final a la persona que se encargará de hacer los análisis
+   * 02 de análisis de datos tiene el objetivo más exploratorio su objetivo es describir a grandes rasgos qué información tenemos y qué podemos describir con ella sin entrar tanto en temas estadísticos
+   * 03 análisis estadístico esta parte se encarga del análisis más riguroso haciendo pruebas de hipótesis análisis de correlación y respondiendo preguntas desde un punto de vista más teórico.
+   * 04 transfer learning el objetivo de notebook es entrenar un modelo para poder realizar análisis de sentimiento de acuerdo a la review que den de un producto de esta forma podemos comprender cuál es el sentimiento a la hora de escribir una review.
 
-4. Estructura del Dashboard en Power BI
-* A. Strategic Executive SummaryKPIs Dinámicos: Utiliza Field Parameters para que el usuario elija si quiere ver el KPI por "Ingresos", "Volumen de Pedidos" o "Margen de Beneficio".Gráfico de Descomposición (Decomposition Tree): Para analizar qué categorías de productos están arrastrando el margen hacia abajo.
-* B. Supply Chain & Logistics (Deep Dive)Análisis de Errores de Estimación: Un histograma que muestre la diferencia en días entre la fecha prometida y la real.Mapa de Calor Geo-espacial: Integración con Azure Maps o Mapbox para visualizar densidades de entrega y tiempos de tránsito por estado brasileño.
-* C. Customer Intelligence (Matemática Aplicada)Matriz de Análisis de Cohortes: Una tabla de calor que muestre la retención mensual.Segmentación RFM (Recency, Frequency, Monetary): Clasifica a los clientes automáticamente en "Campeones", "En Riesgo" o "Perdidos" usando DAX.D. "What-If" Analysis (El diferenciador)Crea parámetros numéricos donde el usuario pueda deslizar una barra para decir: "Si reducimos el costo del flete en un 10%, ¿cuántas órdenes más necesitamos para mantener el mismo margen?". Esto demuestra que entiendes el negocio.
-
-5. Técnicas de Power BI que debes incluir para impresionar:DAX Avanzado: Uso de CALCULATE, KEEPFILTERS, y funciones de iteración como SUMX o AVERAGEX sobre tablas virtuales.Tooltips Personalizados: Gráficos de tendencias pequeños que aparecen al pasar el cursor sobre un punto de datos.Navegación Intuitiva: Menús laterales colapsables mediante marcadores (bookmarks) y botones.Diseño UI/UX: Usa una paleta de colores profesional (ej. Dark Mode o Corporate Blue) y asegúrate de que haya suficiente espacio negativo.
+De forma independiente cada uno de los notebooks tienen la descripción más detallada sobre lo que se esté realizando cómo se está realizando y para qué se está realizando, espero este proyecto pueda servir de ayuda  -> :) 
